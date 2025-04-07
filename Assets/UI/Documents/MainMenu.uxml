@@ -8,6 +8,10 @@
     <engine:Style src="../Styles/MainMenuStyle.uss" />
     
     <engine:VisualElement name="root" class="root">
+    <!-- Aggiungi questo dentro il tuo VisualElement root -->
+
+   
+</engine:VisualElement>
         <!-- Sfondo con effetti particellari -->
         <engine:VisualElement name="background" class="background">
             <engine:VisualElement name="particles-container" class="particles-container">
@@ -78,7 +82,85 @@
                 
                 <engine:VisualElement name="panel-decoration-bottom" class="panel-decoration bottom" />
             </engine:VisualElement>
+             <!-- Pannello di Matchmaking (nascosto inizialmente) -->
+            <engine:VisualElement name="matchmaking-panel" class="panel panel-hidden">
+                <engine:VisualElement name="search-panel" class="panel">
+                    <engine:VisualElement name="panel-decoration-top" class="panel-decoration top" />
+                    
+                    <engine:VisualElement name="panel-content" class="panel-content">
+                        <engine:Label text="RICERCA AVVERSARIO" name="panel-title" class="panel-title" />
+                        
+                        <engine:VisualElement name="loading-spinner" class="loading-spinner">
+                            <engine:VisualElement name="spinner-inner" class="spinner-inner" />
+                        </engine:VisualElement>
+                        
+                        <engine:Label text="In attesa di un avversario..." name="status-text" class="status-text" />
+                        <engine:Label text="00:00" name="timer-text" class="timer-text" />
+                        
+                        <engine:Button text="ANNULLA" name="cancel-button" class="fantasy-button secondary">
+                            <engine:VisualElement name="button-glow" class="button-glow" />
+                        </engine:Button>
+                    </engine:VisualElement>
+                    
+                    <engine:VisualElement name="panel-decoration-bottom" class="panel-decoration bottom" />
+            </engine:VisualElement>
             
+            <!-- Pannello partita trovata (nascosto inizialmente) -->
+            <engine:VisualElement name="match-found-panel" class="panel panel-hidden">
+                <engine:VisualElement name="panel-decoration-top" class="panel-decoration top" />
+                
+                <engine:VisualElement name="panel-content" class="panel-content">
+                    <engine:Label text="AVVERSARIO TROVATO!" name="found-title" class="panel-title success" />
+                    
+                    <engine:VisualElement name="players-container" class="players-container">
+                        <engine:VisualElement name="player-card" class="player-card">
+                            <engine:Label text="TU" name="player-title" class="player-title" />
+                            <engine:VisualElement name="player-avatar" class="player-avatar player1" />
+                            <engine:Label text="Player1" name="player-name" class="player-name" />
+                        </engine:VisualElement>
+                        
+                        <engine:Label text="VS" name="vs-text" class="vs-text" />
+                        
+                        <engine:VisualElement name="opponent-card" class="player-card">
+                            <engine:Label text="AVVERSARIO" name="opponent-title" class="player-title" />
+                            <engine:VisualElement name="opponent-avatar" class="player-avatar player2" />
+                            <engine:Label text="Player2" name="opponent-name" class="player-name" />
+                        </engine:VisualElement>
+                    </engine:VisualElement>
+                    
+                    <engine:Label text="La partita inizierà tra" name="countdown-label" class="countdown-label" />
+                    <engine:Label text="3" name="countdown-text" class="countdown-text" />
+                </engine:VisualElement>
+                
+                <engine:VisualElement name="panel-decoration-bottom" class="panel-decoration bottom" />
+            </engine:VisualElement>
+            
+            <!-- Pannello nessun avversario trovato (nascosto inizialmente) -->
+            <engine:VisualElement name="no-match-panel" class="panel panel-hidden">
+                <engine:VisualElement name="panel-decoration-top" class="panel-decoration top" />
+                
+                <engine:VisualElement name="panel-content" class="panel-content">
+                    <engine:Label text="NESSUN AVVERSARIO TROVATO" name="no-match-title" class="panel-title warning" />
+                    
+                    <engine:Label text="Vuoi giocare contro l'IA?" name="ai-question" class="info-text" />
+                    
+                    <engine:VisualElement name="options-container" class="options-container">
+                        <engine:Button text="SÌ, CONTRO IA" name="play-ai-button" class="fantasy-button">
+                            <engine:VisualElement name="button-glow" class="button-glow" />
+                        </engine:Button>
+                        
+                        <engine:Button text="RIPROVA" name="retry-button" class="fantasy-button">
+                            <engine:VisualElement name="button-glow" class="button-glow" />
+                        </engine:Button>
+                        
+                        <engine:Button text="TORNA AL MENU" name="back-button" class="fantasy-button secondary">
+                            <engine:VisualElement name="button-glow" class="button-glow" />
+                        </engine:Button>
+                    </engine:VisualElement>
+                </engine:VisualElement>
+                
+                <engine:VisualElement name="panel-decoration-bottom" class="panel-decoration bottom" />
+            </engine:VisualElement>
             <!-- Pannello Impostazioni -->
             <engine:VisualElement name="settings-panel" class="panel panel-hidden">
                 <engine:VisualElement name="panel-decoration-top" class="panel-decoration top" />

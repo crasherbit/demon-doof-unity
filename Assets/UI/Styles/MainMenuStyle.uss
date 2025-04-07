@@ -427,3 +427,169 @@
     color: rgba(255, 255, 255, 0.5);
     -unity-text-align: middle-right;
 }
+
+/* Aggiungi alla fine del file */
+
+.fullscreen-panel {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    align-items: center;
+    justify-content: center;
+    transition-duration: var(--anim-duration);
+    z-index: 1000; /* Valore alto per garantire che sia sopra tutto il resto */
+}
+
+.fullscreen-panel.panel-hidden {
+    opacity: 0;
+    scale: 0.95;
+    visibility: hidden;
+    /* Non includiamo translate qui per non interferire con l'effetto desiderato */
+    z-index: -1; /* Per assicurarsi che sia completamente nascosto */
+}
+/* Loading spinner */
+.loading-spinner {
+    width: 80px;
+    height: 80px;
+    background-image: url('project://database/Assets/Textures/UI/scroll_decoration.png');
+    -unity-background-scale-mode: scale-to-fit;
+    border-radius: 40px;
+    margin: 20px;
+    rotate: 0deg;
+    transition-duration: 3s;
+    transition-timing-function: linear;
+    transition-delay: 0s;
+    transition-property: rotate;
+    transition-repeat-count: infinite;
+}
+
+.spinner-inner {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-image: url('project://database/Assets/Textures/UI/game_logo.png');
+    -unity-background-scale-mode: scale-to-fit;
+    rotate: 0deg;
+    transition-duration: 5s;
+    transition-timing-function: linear;
+    transition-delay: 0s;
+    transition-property: rotate;
+    transition-repeat-count: infinite;
+}
+
+/* Testo status */
+.status-text {
+    font-size: 20px;
+    color: var(--text-color);
+    margin: 10px 0;
+    -unity-text-align: middle-center;
+}
+
+.timer-text {
+    font-size: 24px;
+    color: var(--primary-color);
+    -unity-font-style: bold;
+    margin: 5px 0 20px 0;
+}
+
+.info-text {
+    font-size: 18px;
+    color: var(--text-color);
+    margin: 15px 0;
+    -unity-text-align: middle-center;
+}
+
+/* Player panels */
+.players-container {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0 20px 0;
+}
+
+.player-card {
+    width: 40%;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-width: 1px;
+    border-color: var(--panel-border);
+    border-radius: 5px;
+    padding: 10px;
+    align-items: center;
+}
+
+.player-title {
+    font-size: 16px;
+    color: var(--primary-color);
+    -unity-font-style: bold;
+    margin-bottom: 5px;
+}
+
+.player-avatar {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-width: 2px;
+    border-color: var(--panel-border);
+    border-radius: 30px;
+    margin: 5px;
+}
+
+.player-avatar.player1 {
+    background-image: url('project://database/Assets/Textures/UI/game_logo.png');
+    -unity-background-scale-mode: scale-to-fit;
+    -unity-background-image-tint-color: rgb(100, 150, 255);
+}
+
+.player-avatar.player2 {
+    background-image: url('project://database/Assets/Textures/UI/game_logo.png');
+    -unity-background-scale-mode: scale-to-fit;
+    -unity-background-image-tint-color: rgb(255, 100, 100);
+}
+
+.player-name {
+    font-size: 14px;
+    color: var(--text-color);
+    margin-top: 5px;
+}
+
+.vs-text {
+    font-size: 28px;
+    color: var(--primary-color);
+    -unity-font-style: bold;
+}
+
+/* Countdown */
+.countdown-label {
+    font-size: 18px;
+    color: var(--text-color);
+    margin: 5px 0;
+}
+
+.countdown-text {
+    font-size: 42px;
+    color: var(--primary-color);
+    -unity-font-style: bold;
+    margin: 5px 0;
+}
+
+/* Container opzioni */
+.options-container {
+    width: 100%;
+    align-items: center;
+    margin-top: 10px;
+}
+
+/* Aggiungi la classe di successo e warning per titoli */
+.panel-title.success {
+    color: var(--success-color, rgb(100, 200, 100));
+    -unity-text-outline-color: rgb(50, 100, 50);
+}
+
+.panel-title.warning {
+    color: var(--warning-color, rgb(230, 180, 80));
+    -unity-text-outline-color: rgb(100, 70, 0);
+}
