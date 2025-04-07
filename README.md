@@ -1,161 +1,194 @@
 # Demon Doof Unity
 
-Un gioco tattico a turni sviluppato in Unity 2022.3.55f1, dove i giocatori controllano unità in un ambiente a griglia per combattere contro nemici controllati dall'IA.
+**Demon Doof** is a turn-based tactical game developed in Unity 2022.3.55f1. Players control a squad of unique units on a grid-based battlefield, engaging in strategic combat against AI-controlled enemies.
 
-## Panoramica del Gioco
+---
 
-Demon Doof è un gioco tattico a turni ispirato ai classici del genere come XCOM e Into the Breach. I giocatori controllano una squadra di unità, ciascuna con abilità e caratteristiche uniche, in un ambiente basato su griglia. Il gameplay si alterna tra il turno del giocatore e quello dei nemici, con un focus sulla pianificazione strategica e sull'uso tattico delle abilità disponibili.
+## 🕹️ Game Overview
 
-## Struttura del Progetto
+Inspired by genre classics like *XCOM* and *Into the Breach*, Demon Doof emphasizes deep tactical decision-making and strategic use of each unit's abilities. Gameplay alternates between the player’s turn and the enemy’s, requiring careful planning to outmaneuver the opposition.
 
-### Architettura del Codice
+---
 
-La codebase è organizzata secondo principi di programmazione orientata agli oggetti con una chiara separazione delle responsabilità:
+## 📁 Project Structure
 
-- **Assets/Scripts/Actions/** - Sistema di azioni delle unità
-- **Assets/Scripts/Grid/** - Sistema di griglia e pathfinding
-- **Assets/Scripts/UI/** - Interfaccia utente
-- **Assets/Prefabs/** - Prefabbricati per unità, effetti, ecc.
-- **Assets/Scenes/** - Scene di gioco
-- **Assets/Models/** - Modelli 3D
-- **Assets/Animations/** - Animazioni
+### Code Architecture
 
-### Componenti Principali
+The codebase follows object-oriented principles with a clear separation of concerns:
 
-#### Sistema a Turni
-- `TurnSystem.cs` - Gestisce l'alternanza dei turni tra giocatore e nemici
-- Eventi che notificano i cambiamenti di turno per sincronizzare le varie componenti
+- `Assets/Scripts/Actions/` – Unit action system  
+- `Assets/Scripts/Grid/` – Grid management and pathfinding  
+- `Assets/Scripts/UI/` – User interface logic  
+- `Assets/Prefabs/` – Prefabs for units, effects, objects  
+- `Assets/Scenes/` – Game scenes  
+- `Assets/Models/` – 3D models  
+- `Assets/Animations/` – Animations  
 
-#### Sistema di Griglia
-- `Grid/GridSystem.cs` - Sistema di coordinate basato su celle
-- `Grid/GridPosition.cs` - Rappresentazione delle coordinate logiche
-- `PathNode.cs` e `Pathfinding.cs` - Algoritmo A* per la navigazione
+### Core Components
 
-#### Sistema di Azioni
-- `Actions/BaseAction.cs` - Classe base per tutte le azioni
-- Azioni specifiche:
-  - `Actions/MoveAction.cs` - Movimento delle unità
-  - `Actions/ShootAction.cs` - Attacco a distanza
-  - `Actions/SwordAction.cs` - Attacco corpo a corpo
-  - `Actions/GrenadeAction.cs` - Lancio di granate con effetti ad area
-  - `Actions/InteractAction.cs` - Interazione con oggetti dell'ambiente
-  - `Actions/SpinAction.cs` - Rotazione dell'unità
+#### Turn System
+- `TurnSystem.cs` – Manages the turn order between player and enemies  
+- Uses events to synchronize game systems on turn change
 
-#### Gestione delle Unità
-- `Unit.cs` - Rappresentazione delle unità con statistiche e collezione di azioni disponibili
-- `UnitManager.cs` - Gestione di tutte le unità nel campo di battaglia
-- `UnitActionSystem.cs` - Sistema di selezione e esecuzione delle azioni
-- `UnitAnimator.cs` - Gestione delle animazioni delle unità
+#### Grid System
+- `Grid/GridSystem.cs` – Manages a coordinate-based cell grid  
+- `Grid/GridPosition.cs` – Logical coordinate representation  
+- `PathNode.cs`, `Pathfinding.cs` – A* algorithm implementation for movement
 
-#### AI dei Nemici
-- `EnemyAI.cs` - Logica di comportamento per i nemici controllati dal computer
-- `EnemyAIAction.cs` - Struttura per definire le azioni dell'IA
+#### Action System
+- `BaseAction.cs` – Abstract class for all unit actions  
+- Implemented actions:  
+  - `MoveAction.cs`  
+  - `ShootAction.cs`  
+  - `SwordAction.cs`  
+  - `GrenadeAction.cs`  
+  - `InteractAction.cs`  
+  - `SpinAction.cs`
 
-#### Input e Camera
-- `InputManager.cs` - Gestione input da tastiera e mouse
-- `TouchInputManager.cs` - Supporto per input touch (mobile)
-- `CameraController.cs` e `CameraManager.cs` - Gestione della camera di gioco
+#### Unit Management
+- `Unit.cs` – Represents unit stats and available actions  
+- `UnitManager.cs` – Handles all active units in battle  
+- `UnitActionSystem.cs` – Handles input and action execution  
+- `UnitAnimator.cs` – Manages unit animations
 
-#### Interazioni con l'Ambiente
-- `IInteractable.cs` - Interfaccia per oggetti interattivi
-- `Door.cs`, `BarrelInteract.cs`, `DestructibleCrate.cs` - Oggetti interattivi
+#### Enemy AI
+- `EnemyAI.cs` – Controls enemy behavior logic  
+- `EnemyAIAction.cs` – Encapsulates AI action evaluation
 
-## Pattern di Progettazione Utilizzati
+#### Input and Camera
+- `InputManager.cs` – Keyboard and mouse input  
+- `TouchInputManager.cs` – Mobile touch support  
+- `CameraController.cs`, `CameraManager.cs` – In-game camera movement and control
 
-1. **Singleton** - Utilizzato per manager globali come `UnitActionSystem`, `TurnSystem`
-2. **Observer** - Sistema di eventi per notificare cambiamenti di stato (turni, selezione unità)
-3. **Command** - Implementazione delle azioni delle unità
-4. **Factory** - Creazione di componenti di gioco
-5. **State Machine** - Gestione degli stati delle unità e dell'IA
+#### Environment Interactions
+- `IInteractable.cs` – Interface for interactable objects  
+- Examples: `Door.cs`, `BarrelInteract.cs`, `DestructibleCrate.cs`
 
-## Requisiti di Sistema
+---
 
-- Unity 2022.3.55f1 o superiore
+## 🧠 Design Patterns Used
+
+- **Singleton** – Global managers like `UnitActionSystem`, `TurnSystem`  
+- **Observer** – Event-driven updates for turn changes, selections, etc.  
+- **Command** – Encapsulation of unit actions  
+- **Factory** – Object creation logic for gameplay elements  
+- **State Machine** – Unit state and enemy AI logic
+
+---
+
+## ⚙️ System Requirements
+
+- Unity Editor 2022.3.55f1 or newer  
 - .NET Framework 4.x
 
-## Setup del Progetto
+---
 
-1. Clona la repository : git clone https://github.com/crasherbit/demon-doof-unity.git
-2. Apri il progetto in Unity 2022.3.55f1
-3. Apri la scena principale in `Assets/Scenes/GameScene.unity`
+## 🚀 Getting Started
 
-## Comandi di Gioco
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/crasherbit/demon-doof-unity.git
+   ```
+2. Open the project in Unity 2022.3.55f1  
+3. Load the main scene located at `Assets/Scenes/GameScene.unity`
 
-- **Clic sinistro** - Seleziona unità/esegui azione
-- **Clic destro** - Annulla selezione
-- **WASD/Frecce** - Movimento camera
-- **Q/E** - Rotazione camera
-- **Rotellina mouse** - Zoom camera
-- **Spazio** - Fine turno
+---
 
-## Piano di Implementazione Multiplayer con FishNet
+## 🎮 Gameplay Controls
 
-### Fase 1: Implementazione Base (2-3 settimane)
-- Installazione e configurazione di FishNet
-- Refactoring di TurnSystem per supportare più giocatori
-- Conversione delle unità in NetworkObjects
-- Adattamento del sistema di azioni per il multiplayer
-- Creazione di un sistema di lobby base
+- **Left Click** – Select units / Confirm actions  
+- **Right Click** – Cancel selection  
+- **WASD / Arrow Keys** – Move camera  
+- **Q / E** – Rotate camera  
+- **Mouse Scroll** – Zoom in/out  
+- **Spacebar** – End turn  
 
-### Fase 2: Backend e Sistemi di Supporto (3-4 settimane)
-- Sistema di autenticazione
-- Persistenza dei dati e salvataggio partite
-- Matchmaking e configurazione server dedicati
+---
 
-### Fase 3: Integrazione e Rifinitura (2-3 settimane)
-- Integrazione completa frontend-backend
-- Ottimizzazione delle prestazioni di rete
-- Sicurezza e funzionalità sociali
-- Polishing e preparazione al lancio
+## 🌐 Multiplayer Roadmap (via FishNet)
 
-## Considerazioni Tecniche per il Multiplayer
+### Phase 1: Core Implementation (2–3 weeks)
+- Install and configure FishNet  
+- Refactor `TurnSystem` for multi-player compatibility  
+- Convert units into `NetworkObjects`  
+- Adapt action system for networking  
+- Create a basic multiplayer lobby system
 
-1. **Sincronizzazione Deterministica**
-   - Assicurare che la logica di gioco produca risultati identici su tutti i client
-   - Utilizzare numeri random con seed condiviso
-   - Minimizzare effetti physics imprevedibili
+### Phase 2: Backend & Support Systems (3–4 weeks)
+- User authentication  
+- Match persistence and save/load  
+- Matchmaking and dedicated server configuration
 
-2. **Gestione Connessioni**
-   - Implementare reconnect automatico
-   - Gestire gracefully la perdita di connessione
-   - Prevedere meccaniche di "stand-in" per giocatori disconnessi
+### Phase 3: Integration & Polishing (2–3 weeks)
+- Frontend-backend integration  
+- Network performance optimization  
+- Security, social features  
+- Final polish and launch prep
 
-3. **Scalabilità**
-   - Progettare per supportare la crescita degli utenti
-   - Implementare logging e analytics
-   - Considerare soluzioni serverless per alcuni componenti
+---
 
-## Prossimi Passi Specifici per l'Implementazione
+## 📌 Multiplayer Technical Considerations
 
-1. **Setup Iniziale di FishNet**
-   - Installazione del package FishNet da Unity Asset Store
-   - Configurazione di NetworkManager nella scena principale
-   - Creazione di scena di connessione/lobby
+1. **Deterministic Synchronization**  
+   - Ensure identical outcomes across clients  
+   - Use shared RNG seeds  
+   - Avoid unpredictable physics where possible
 
-2. **Adattamento dei Core Systems**
-   - Modifica del `TurnSystem.cs` per supportare turni multiplayer
-   - Aggiunta di NetworkBehaviour ai principali manager
-   - Sincronizzazione del GridSystem tra client
+2. **Connection Handling**  
+   - Automatic reconnect logic  
+   - Graceful handling of disconnections  
+   - Stand-in system for dropped players
 
-3. **Networking delle Unità e Azioni**
-   - Conversione delle unit in NetworkObjects
-   - Implementazione di RPCs per le azioni
-   - Gestione dell'autorità client/server per le azioni
+3. **Scalability**  
+   - Design for increasing user base  
+   - Integrate logging and analytics  
+   - Evaluate serverless solutions for some systems
 
-4. **Sistema di Lobby e Matchmaking**
-   - UI per creazione/join delle partite
-   - Implementazione di room e matchmaking
-   - Gestione delle disconnessioni
+---
 
-5. **Testing e Ottimizzazione**
-   - Test con varie condizioni di rete
-   - Ottimizzazione della bandwidth usage
-   - Minimizzazione della latenza percepita
+## ✅ Immediate Next Steps for Multiplayer
 
-## Contribuire
+1. **FishNet Setup**  
+   - Install FishNet from the Unity Asset Store  
+   - Add `NetworkManager` to main scene  
+   - Create lobby and connection scenes
 
-Le pull request sono benvenute. Per modifiche importanti, apri prima un issue per discutere cosa vorresti cambiare.
+2. **Core Systems Refactor**  
+   - Modify `TurnSystem.cs` for multiplayer turns  
+   - Add `NetworkBehaviour` to managers  
+   - Sync `GridSystem` state across clients
 
-## Licenza
+3. **Networked Units & Actions**  
+   - Make units `NetworkObjects`  
+   - Use RPCs to handle action requests  
+   - Implement authority checks per client/server
 
-[MIT](LICENSE)
+4. **Lobby & Matchmaking**  
+   - Create UI for joining/creating matches  
+   - Handle room management  
+   - Implement disconnect handling
+
+5. **Testing & Optimization**  
+   - Simulate various network conditions  
+   - Reduce bandwidth usage  
+   - Minimize perceived input lag
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you'd like to propose.
+
+---
+
+## 📄 License  and Usage
+
+This project is shared for **educational and portfolio purposes only**.  
+Commercial use, redistribution, or integration into other commercial projects is **not permitted without explicit permission** from the author.
+
+Some parts of the code or assets may be inspired by or derived from community tutorials, open source projects, or other learning materials.  
+Proper credit is given where due, and no ownership is claimed over third-party content.
+
+If you'd like to use this project in any way beyond personal learning or review, feel free to reach out and ask.
+
+© 2025 crasherbit. All rights reserved.
