@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<engine:UXML 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:engine="UnityEngine.UIElements" 
+    xmlns:editor="UnityEditor.UIElements" 
+    xsi:noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd">
+    
+    <engine:Style src="../Styles/MainMenuStyle.uss" />
+    
+    <engine:VisualElement name="root" class="root">
+        <!-- Sfondo con effetti particellari -->
+        <engine:VisualElement name="background" class="background">
+            <engine:VisualElement name="particles-container" class="particles-container">
+                <engine:VisualElement name="particle-1" class="particle particle-1" />
+                <engine:VisualElement name="particle-2" class="particle particle-2" />
+                <engine:VisualElement name="particle-3" class="particle particle-3" />
+                <engine:VisualElement name="particle-4" class="particle particle-4" />
+                <engine:VisualElement name="particle-5" class="particle particle-5" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+        
+        <!-- Pergamena decorativa superiore -->
+        <engine:VisualElement name="top-scroll" class="scroll top-scroll" />
+        
+        <!-- Contenitore Logo e Titolo -->
+        <engine:VisualElement name="title-container" class="title-container">
+            <engine:VisualElement name="logo" class="logo" />
+            <engine:Label text="DEMON DOOF" name="game-title" class="game-title" />
+            <engine:Label text="TACTICAL DUNGEON CRAWLER" name="game-subtitle" class="game-subtitle" />
+        </engine:VisualElement>
+        
+        <!-- Sistema di pannelli dinamici -->
+        <engine:VisualElement name="panels-container" class="panels-container">
+            <!-- Pannello principale -->
+            <engine:VisualElement name="main-panel" class="panel panel-slide-in">
+                <engine:VisualElement name="panel-decoration-top" class="panel-decoration top" />
+                
+                <engine:VisualElement name="panel-content" class="panel-content">
+                    <engine:Button text="PLAY" name="play-button" class="fantasy-button">
+                        <engine:VisualElement name="button-glow" class="button-glow" />
+                    </engine:Button>
+                    
+                    <engine:Button text="SETTINGS" name="settings-button" class="fantasy-button">
+                        <engine:VisualElement name="button-glow" class="button-glow" />
+                    </engine:Button>
+                    
+                    <engine:Button text="CREDITS" name="credits-button" class="fantasy-button">
+                        <engine:VisualElement name="button-glow" class="button-glow" />
+                    </engine:Button>
+                    
+                    <engine:Button text="QUIT" name="quit-button" class="fantasy-button">
+                        <engine:VisualElement name="button-glow" class="button-glow" />
+                    </engine:Button>
+                </engine:VisualElement>
+                
+                <engine:VisualElement name="panel-decoration-bottom" class="panel-decoration bottom" />
+            </engine:VisualElement>
+            
+            <!-- Pannello Modalità di Gioco -->
+            <engine:VisualElement name="play-panel" class="panel panel-hidden">
+                <engine:VisualElement name="panel-decoration-top" class="panel-decoration top" />
+                
+                <engine:VisualElement name="panel-content" class="panel-content">
+                    <engine:Label text="GAME MODE" class="panel-title" />
+                    
+                    <engine:Button text="SINGLE PLAYER" name="single-player-button" class="fantasy-button">
+                        <engine:VisualElement name="button-glow" class="button-glow" />
+                    </engine:Button>
+                    
+                    <engine:Button text="MULTIPLAYER" name="multiplayer-button" class="fantasy-button">
+                        <engine:VisualElement name="button-glow" class="button-glow" />
+                    </engine:Button>
+                    
+                    <engine:Button text="BACK" name="play-back-button" class="fantasy-button secondary">
+                        <engine:VisualElement name="button-glow" class="button-glow" />
+                    </engine:Button>
+                </engine:VisualElement>
+                
+                <engine:VisualElement name="panel-decoration-bottom" class="panel-decoration bottom" />
+            </engine:VisualElement>
+            
+            <!-- Pannello Impostazioni -->
+            <engine:VisualElement name="settings-panel" class="panel panel-hidden">
+                <engine:VisualElement name="panel-decoration-top" class="panel-decoration top" />
+                
+                <engine:VisualElement name="panel-content" class="panel-content">
+                    <engine:Label text="SETTINGS" class="panel-title" />
+                    
+                    <engine:VisualElement class="setting-group">
+                        <engine:Label text="Music Volume" class="setting-label" />
+                        <engine:VisualElement class="slider-container">
+                            <engine:SliderInt name="music-slider" low-value="0" high-value="100" value="80" class="fantasy-slider" />
+                        </engine:VisualElement>
+                    </engine:VisualElement>
+                    
+                    <engine:VisualElement class="setting-group">
+                        <engine:Label text="SFX Volume" class="setting-label" />
+                        <engine:VisualElement class="slider-container">
+                            <engine:SliderInt name="sfx-slider" low-value="0" high-value="100" value="80" class="fantasy-slider" />
+                        </engine:VisualElement>
+                    </engine:VisualElement>
+                    
+                    <engine:VisualElement class="setting-group">
+                        <engine:Label text="Graphics Quality" class="setting-label" />
+                        <engine:DropdownField name="quality-dropdown" class="fantasy-dropdown" />
+                    </engine:VisualElement>
+                    
+                    <engine:VisualElement class="setting-group toggle-group">
+                        <engine:Label text="Fullscreen" class="setting-label" />
+                        <engine:Toggle name="fullscreen-toggle" class="fantasy-toggle" />
+                    </engine:VisualElement>
+                    
+                    <engine:Button text="BACK" name="settings-back-button" class="fantasy-button secondary">
+                        <engine:VisualElement name="button-glow" class="button-glow" />
+                    </engine:Button>
+                </engine:VisualElement>
+                
+                <engine:VisualElement name="panel-decoration-bottom" class="panel-decoration bottom" />
+            </engine:VisualElement>
+            
+            <!-- Pannello Crediti -->
+            <engine:VisualElement name="credits-panel" class="panel panel-hidden">
+                <engine:VisualElement name="panel-decoration-top" class="panel-decoration top" />
+                
+                <engine:VisualElement name="panel-content" class="panel-content">
+                    <engine:Label text="CREDITS" class="panel-title" />
+                    
+                    <engine:ScrollView class="credits-scroll">
+                        <engine:Label text="Demon Doof" class="credits-header" />
+                        <engine:Label text="Created by crasherbit" class="credits-text" />
+                        
+                        <engine:VisualElement class="credits-separator" />
+                        
+                        <engine:Label text="Programming" class="credits-subheader" />
+                        <engine:Label text="crasherbit" class="credits-text" />
+                        
+                        <engine:VisualElement class="credits-separator" />
+                        
+                        <engine:Label text="Art Assets" class="credits-subheader" />
+                        <engine:Label text="Various Artists and Asset Packs" class="credits-text" />
+                        
+                        <engine:VisualElement class="credits-separator" />
+                        
+                        <engine:Label text="Special Thanks" class="credits-subheader" />
+                        <engine:Label text="Unity Technologies" class="credits-text" />
+                        <engine:Label text="GitHub Copilot" class="credits-text" />
+                        <engine:Label text="FishNet" class="credits-text" />
+                    </engine:ScrollView>
+                    
+                    <engine:Button text="BACK" name="credits-back-button" class="fantasy-button secondary">
+                        <engine:VisualElement name="button-glow" class="button-glow" />
+                    </engine:Button>
+                </engine:VisualElement>
+                
+                <engine:VisualElement name="panel-decoration-bottom" class="panel-decoration bottom" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+        
+        <!-- Pergamena decorativa inferiore -->
+        <engine:VisualElement name="bottom-scroll" class="scroll bottom-scroll" />
+        
+        <!-- Versione -->
+        <engine:Label text="v1.0.0" name="version-text" class="version-text" />
+    </engine:VisualElement>
+</engine:UXML>
